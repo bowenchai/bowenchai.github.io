@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=480, initial-scale=1">
+  <title>Visitor map</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--map-bg, #faf9f7); color: var(--map-text, #3d3929); }
+    body { width: 480px; font-family: Arial, sans-serif; }
+    #map-frame-content { width: 480px; display: flow-root; }
+    .map-error { margin: 0; line-height: 1.4; }
+  </style>
+  <script src="../js/visitor-map-frame.js?v=6a19d95af042"></script>
+</head>
+<body>
+  <main id="map-frame-content">
+    <div>
+      <script>
+        (function () {
+          const url = window.visitorMapFrame.widgetURL;
+          if (!url) return;
+          const escaped = url.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+          document.write('<script type="text/javascript" id="mapmyvisitors" src="' + escaped + '" onerror="window.visitorMapFrame.failed = true;"><\/script>');
+        })();
+      </script>
+    </div>
+  </main>
+</body>
+</html>

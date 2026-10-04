@@ -1,0 +1,343 @@
+/* Local preparation additions; template styles remain in theme-luka.css. */
+.ui-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Content stays readable before scripts initialize or when scripting is off. */
+body.theme-luka .section {
+  opacity: 1;
+  transform: none;
+}
+.sections-animate body.theme-luka .section:not(.visible) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Preserve the official emblem proportions and color in both themes. */
+body.theme-luka #experience .sjtu-emblem {
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Keep section spacing equal after the last experience entry. */
+body.theme-luka #experience .timeline-item:last-child {
+  padding-bottom: 0;
+}
+body.theme-luka #experience .timeline-item:last-child .experience-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* The global link hover filter must not alter portrait colors. */
+body.theme-luka .image.avatar:hover {
+  filter: none;
+}
+
+/* Only the outer portrait edge responds to hover, using theme colors. */
+body.theme-luka .image.avatar img {
+  transition: box-shadow 0.18s ease;
+}
+body.theme-luka .image.avatar:hover img {
+  box-shadow: 0 0 0 2px var(--luka-border),
+              0 0 12px var(--luka-border),
+              0 6px 24px var(--luka-shadow);
+}
+
+/* Keep the full 480px map in an isolated document and fit it into this layout. */
+body.theme-luka .visitor-map-layout {
+  width: 240px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 64px;
+}
+body.theme-luka .visitor-map-viewport {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+body.theme-luka .visitor-map-viewport[hidden] {
+  display: none !important;
+}
+body.theme-luka .visitor-map-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 480px;
+  max-width: none;
+  height: 1px;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  transform-origin: 0 0;
+}
+body.theme-luka .visitor-map-layout noscript {
+  color: var(--luka-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+body.theme-luka .visitor-map-status {
+  margin: 0;
+  color: var(--luka-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Publication venue badges, author annotations and resource links. */
+:root {
+  --pub-accepted-bg: #f3e8e1;
+  --pub-accepted-ink: #854c35;
+  --pub-accepted-border: #dcc3b3;
+  --pub-preprint-bg: #e9eeea;
+  --pub-preprint-ink: #4f6b63;
+  --pub-preprint-border: #c3cfc8;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pub-accepted-bg: #35271f;
+    --pub-accepted-ink: #ebb199;
+    --pub-accepted-border: #634738;
+    --pub-preprint-bg: #24312a;
+    --pub-preprint-ink: #b2c7bd;
+    --pub-preprint-border: #475e51;
+  }
+}
+[data-theme="dark"] {
+  --pub-accepted-bg: #35271f;
+  --pub-accepted-ink: #ebb199;
+  --pub-accepted-border: #634738;
+  --pub-preprint-bg: #24312a;
+  --pub-preprint-ink: #b2c7bd;
+  --pub-preprint-border: #475e51;
+}
+body.theme-luka #publications .pub-entry--accepted {
+  --pub-venue-bg: var(--pub-accepted-bg);
+  --pub-venue-ink: var(--pub-accepted-ink);
+  --pub-venue-border: var(--pub-accepted-border);
+}
+body.theme-luka #publications .pub-entry--preprint {
+  --pub-venue-bg: var(--pub-preprint-bg);
+  --pub-venue-ink: var(--pub-preprint-ink);
+  --pub-venue-border: var(--pub-preprint-border);
+}
+/* The template's 3px orange left border and 16px inset remain on each li. */
+body.theme-luka #publications .pub-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+}
+body.theme-luka #publications .pub-venue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 56px;
+  padding: 8px 10px;
+  border: 1px solid var(--pub-venue-border);
+  border-radius: 6px;
+  background: var(--pub-venue-bg);
+  color: var(--pub-venue-ink);
+  line-height: 1.2;
+  text-align: center;
+}
+body.theme-luka #publications .pub-venue-name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+body.theme-luka #publications .pub-venue-year {
+  font-size: 12px;
+  font-weight: 500;
+}
+body.theme-luka #publications .pub-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+body.theme-luka #publications .pub-content .title {
+  margin-bottom: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+body.theme-luka #publications .pub-content .author {
+  margin-bottom: 6px;
+  color: var(--luka-text);
+}
+body.theme-luka #publications .pub-author {
+  white-space: nowrap;
+}
+body.theme-luka #publications .pub-author-mark {
+  margin-left: 1px;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+}
+body.theme-luka #publications .pub-content .periodical {
+  margin-bottom: 10px;
+  color: var(--pub-venue-ink);
+}
+body.theme-luka #publications .pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+body.theme-luka #publications .pub-links .pub-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 5px 10px;
+  border: 1px solid var(--pub-venue-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--pub-venue-ink);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+body.theme-luka #publications .pub-links a:hover {
+  border-color: var(--pub-venue-ink);
+  background: var(--pub-venue-bg);
+  filter: none;
+}
+body.theme-luka #publications .pub-links a:focus-visible {
+  outline: 2px solid var(--pub-venue-ink);
+  outline-offset: 3px;
+}
+body.theme-luka #publications .pub-link-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+/* Brand marks use their original paths, tinted by the button's theme color. */
+body.theme-luka #publications .pub-link-icon--brand {
+  fill: currentColor;
+  stroke: none;
+}
+
+body.theme-luka #publications .pub-author-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0 0 8px;
+  color: var(--luka-text);
+  font-size: 12px;
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  body.theme-luka #publications .pub-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  body.theme-luka #publications .pub-venue {
+    justify-self: start;
+    min-width: 72px;
+    min-height: 52px;
+    padding: 7px 10px;
+  }
+  body.theme-luka #publications .pub-links .pub-link {
+    min-height: 40px;
+  }
+}
+
+/* Keep only the footer's own spacing after the final content section. */
+body.theme-luka .content {
+  padding-bottom: 0;
+}
+body.theme-luka .content > .section:last-child {
+  margin-bottom: 0;
+}
+body.theme-luka #publications .bibliography li:last-child {
+  margin-bottom: 0;
+}
+
+/* Each full year/month labels one list of updates. */
+body.theme-luka #news .news-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body.theme-luka #news .news-group {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 12px;
+}
+body.theme-luka #news .news-updates {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body.theme-luka #news .news-date {
+  color: var(--luka-text);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+body.theme-luka #news .news-date::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--luka-accent);
+  vertical-align: 0.12em;
+}
+body.theme-luka #news .news-text {
+  min-width: 0;
+  margin: 0;
+  color: var(--luka-text);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+body.theme-luka #news .news-text a:focus-visible {
+  outline: 2px solid var(--luka-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+@media (max-width: 640px) {
+  body.theme-luka #news .news-group {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    row-gap: 4px;
+  }
+}
+
+/* Compact resource links remain part of each acceptance sentence. */
+body.theme-luka #news .news-paper,
+body.theme-luka #news .news-venue {
+  font-weight: 600;
+}
+body.theme-luka #news .news-resources {
+  display: inline-block;
+  font-size: 13px;
+  white-space: nowrap;
+}
+body.theme-luka #news .news-resource-divider {
+  color: var(--luka-secondary);
+}

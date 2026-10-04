@@ -1,0 +1,57 @@
+# Local maintenance and private state (at every project depth).
+AGENTS.md
+.release_state/
+.local_state/
+.codex/
+.agents/
+.prompt_cache/
+**/docs/RELEASE.md
+**/docs/WEBSITE.md
+
+# Credentials and local configuration.
+.env
+.env.*
+!.env.example
+!.env.sample
+.envrc
+.netrc
+.npmrc
+*.pem
+*.key
+id_rsa
+id_ed25519
+.vscode/
+.idea/
+
+# Dependencies, environments, and caches.
+node_modules/
+.venv/
+venv/
+.pixi/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.astro/
+.jekyll-cache/
+.sass-cache/
+coverage/
+
+# Generated build output and local previews.
+dist/
+build/
+_site/
+.tmp/
+
+# Operating-system and editor temporary files.
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
+
+# Selected website images, fonts, and other public assets remain trackable.
