@@ -247,9 +247,13 @@ body.theme-luka #publications .pub-author-note {
   }
   body.theme-luka #publications .pub-venue {
     justify-self: start;
-    min-width: 72px;
-    min-height: 52px;
-    padding: 7px 10px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    min-height: 0;
+    padding: 5px 8px;
+    white-space: nowrap;
   }
   body.theme-luka #publications .pub-links .pub-link {
     min-height: 40px;
